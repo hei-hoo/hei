@@ -108,3 +108,8 @@ function mousePressed() {
     balls.push(b);
   }
 }
+function keyPressed() {
+  if (key === ' ') {
+    balls = [];
+  }
+}

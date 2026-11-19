@@ -25,9 +25,33 @@ function draw(){
   rect(0, groundY, width, height - groundY);
 
   // BLANK[1] キャラクターの左右移動
+vx = 0
+let speed = 5;
 
-  // BLANK[2] 重力とジャンプ
+if (keyIsDown(DOWN_ARROW)) {
+  speed = 10;
+}
 
+if (keyIsDown(LEFT_ARROW)) {
+  vx = -speed;
+}
+
+if (keyIsDown(RIGHT_ARROW)) {
+  vx = speed;
+}
+ // BLANK[2] 重力とジャンプ
+vy += g;
+
+// 地面に着いたら止める
+if (y + size / 2 >= groundY) {
+  y = groundY - size / 2;
+  vy = 0;
+}
+
+// スペースキーでジャンプ
+if (keyIsDown(UP_ARROW) && y + size / 2 >= groundY) {
+  vy = -20;
+}        
   // 速くなりすぎないように制限
   vx = constrain(vx, -20, 20);
   vy = constrain(vy, -20, 20);
